@@ -47,12 +47,12 @@ export default function TodoList() {
 
     useEffect(() => {
         // Load todos from localStorage on initial render
-        const storedTodos = localStorage.getItem("todos") ?? [];
-        if (storedTodos) {
+        const storedTodos = localStorage.getItem("todos");
+        if (storedTodos && storedTodos.trim() !== "") {
             try {
                 setTodos(JSON.parse(storedTodos));
             } catch (error) {
-                setTodos(JSON.parse([]));
+                setTodos([]);
                 console.error("Failed to parse todos from localStorage", error);
             }
         }
