@@ -49,7 +49,12 @@ export default function TodoList() {
         // Load todos from localStorage on initial render
         const storedTodos = localStorage.getItem("todos") ?? [];
         if (storedTodos) {
-            setTodos(JSON.parse(storedTodos));
+            try {
+                setTodos(JSON.parse(storedTodos));
+            } catch (error) {
+                setTodos(JSON.parse([]));
+                console.error("Failed to parse todos from localStorage", error);
+            }
         }
     }, []);
 
