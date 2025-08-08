@@ -1,4 +1,4 @@
-import './App.css'
+import './App.css';
 import Button from '@mui/material/Button';
 import Material from './Material';
 import TodoList from './components/TodoList';
@@ -6,6 +6,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { TodosContext } from './contexts/todosContext';
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { ToastProvider } from './contexts/ToastContext';
 
 const theme = createTheme({
   typography: {
@@ -27,16 +28,18 @@ const initialTodos = [
 
 function App() {
   const [todos, setTodos] = useState(initialTodos);
+
   return (
     <ThemeProvider theme={theme}>
-      <div className="App" style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh", background: "#90caf9", padding: "20px 0" }}>
-        <TodosContext.Provider value={{ todos, setTodos }}>
-          <TodoList />
-        </TodosContext.Provider>
+      <ToastProvider >
+        <div className="App" style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh", background: "#90caf9" }}>
 
-        {/* <Button variant="contained" style={{background: "#ff8f00"}}>Hello world</Button> */}
-        {/* <Material /> */}
-      </div>
+          <TodosContext.Provider value={{ todos, setTodos }}>
+            <TodoList />
+          </TodosContext.Provider>
+
+        </div>
+      </ToastProvider>
     </ThemeProvider>
   )
 }
