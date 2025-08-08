@@ -37,7 +37,7 @@ export default function Todo({ todo, showDelete, showUpdate }) {
 
     return (
         <>
-            <Card className="todoCard" sx={{ minWidth: 275, background: "#1976d2", color: "#fff" }}>
+            <Card className="todoCard" sx={{ minWidth: 275, background: "#1976d2", color: "#fff", marginTop: "10px" }}>
                 <CardContent>
                     <Grid container spacing={2}>
                         <Grid size={8}>
